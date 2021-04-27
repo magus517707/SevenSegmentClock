@@ -1,0 +1,6 @@
+clock.c:10:6:init_clock	16	static
+clock.c:27:6:set_time	16	static
+clock.c:52:6:set_time_all	16	static
+clock.c:61:6:get_time	16	static
+clock.c:69:6:serialTime	32	static
+clock.c:78:6:serialDate	32	static

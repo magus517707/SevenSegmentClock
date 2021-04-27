@@ -1,0 +1,2 @@
+encoder.c:11:6:init_encoder	24	static
+encoder.c:25:6:check_encoder	24	static

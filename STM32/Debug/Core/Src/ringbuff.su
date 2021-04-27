@@ -1,0 +1,16 @@
+ringbuff.c:57:9:ringbuff_init	24	static
+ringbuff.c:81:9:ringbuff_is_ready	16	static
+ringbuff.c:91:6:ringbuff_free	16	static
+ringbuff.c:102:6:ringbuff_set_evt_fn	16	static
+ringbuff.c:120:8:ringbuff_write	40	static
+ringbuff.c:165:8:ringbuff_read	40	static
+ringbuff.c:208:8:ringbuff_peek	40	static
+ringbuff.c:255:8:ringbuff_get_free	32	static
+ringbuff.c:284:8:ringbuff_get_full	32	static
+ringbuff.c:310:6:ringbuff_reset	16	static
+ringbuff.c:324:1:ringbuff_get_linear_block_read_address	16	static
+ringbuff.c:336:8:ringbuff_get_linear_block_read_length	32	static
+ringbuff.c:367:8:ringbuff_skip	24	static
+ringbuff.c:390:1:ringbuff_get_linear_block_write_address	16	static
+ringbuff.c:402:8:ringbuff_get_linear_block_write_length	32	static
+ringbuff.c:445:8:ringbuff_advance	24	static

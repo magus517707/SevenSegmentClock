@@ -1,0 +1,8 @@
+dma_uart_rb.c:12:6:TX_Init	8	static
+dma_uart_rb.c:16:13:TX_Data	16	static
+dma_uart_rb.c:25:6:TX_Buffer_Add	16	static
+dma_uart_rb.c:30:6:TX_Complete	8	static
+dma_uart_rb.c:38:6:HAL_UART_TxCpltCallback	16	static
+dma_uart_rb.c:46:6:RX_Init	8	static
+dma_uart_rb.c:55:6:RX_Complete	16	static
+dma_uart_rb.c:67:6:HAL_UART_RxCpltCallback	16	static

@@ -1,0 +1,14 @@
+seven_segment.c:20:6:init_Digit	32	static
+seven_segment.c:30:9:parse_ones	16	static
+seven_segment.c:34:9:parse_tens	16	static
+seven_segment.c:39:6:update_Digits	24	static
+seven_segment.c:52:6:transform_Digit	16	static
+seven_segment.c:61:6:render_Digits	24	static
+seven_segment.c:69:6:render_sep	32	static
+seven_segment.c:78:6:get_SetLSArray	40	static
+seven_segment.c:126:6:display_LEDValue	40	static
+seven_segment.c:140:6:get_SetArray	24	static
+seven_segment.c:165:6:set_Digit_value	16	static
+seven_segment.c:171:6:set_Digit_servo	24	static
+seven_segment.c:185:6:all_Digit_servo	24	static
+seven_segment.c:193:6:set_Digit_servo_angle	24	static
