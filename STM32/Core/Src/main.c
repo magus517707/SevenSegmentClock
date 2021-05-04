@@ -155,25 +155,35 @@ int main(void)
   LS_init(&TimSep  , 20	      , &hdma_tim4_ch1, &htim4, TIM_CHANNEL_1);
 
   //Setup the clock Digits
-#define HOME 90
 
   //All 4 digits are setup in the Seven_Segment.h file. You should look into creating an Init header.
-
   uint8_t arr_HrTen[7] = {0,1,2,3,4,5,6}; 					// Pinout values for servos on pca_hours
   init_Digit(&D_HrTen, &LS_HrTen,arr_HrTen,pca_hours,H10); 	// Initialize the HrTen Digit
-  all_Digit_servo(&D_HrTen, HOME); 							// Set Digit servos to Home position
+  uint8_t h10_min_off[7] = {0,5,0,10,10,8,10};
+  uint8_t h10_max_off[7] = {40,45,30,48,50,45,48};
+  init_offsets(&D_HrTen, h10_min_off, h10_max_off);
+  all_Digit_servo(&D_HrTen, 1); 							// Set Digit servos to Home position
 
   uint8_t arr_HrOne[7] = {8,9,10,11,12,13,14};				// Pinout values for servos on pca_hours
   init_Digit(&D_HrOne, &LS_HrOne,arr_HrOne,pca_hours,H1);	// Initialize the HrOne Digit
-  all_Digit_servo(&D_HrOne, HOME);							// Set Digit servos to Home position
+  uint8_t h1_min_off[7] = {5,0,5,0,0,0,5};
+  uint8_t h1_max_off[7] = {45,40,40,45,45,45,40};
+  init_offsets(&D_HrOne, h1_min_off, h1_max_off);
+  all_Digit_servo(&D_HrOne, 1);							// Set Digit servos to Home position
 
   uint8_t arr_MnTen[7] = {0,1,2,3,4,5,6};					// Pinout values for servos on pca_minutes
   init_Digit(&D_MnTen, &LS_MnTen,arr_MnTen,pca_minutes,M10);// Initialize the MnTen Digit
-  all_Digit_servo(&D_MnTen, HOME);							// Set Digit servos to Home position
+  uint8_t m10_min_off[7] = {5,10,5,5,0,5,5};
+  uint8_t m10_max_off[7] = {48,50,48,48,48,48,48};
+  init_offsets(&D_MnTen, m10_min_off, m10_max_off);
+  all_Digit_servo(&D_MnTen, 1);							// Set Digit servos to Home position
 
   uint8_t arr_MnOne[7] = {8,9,10,11,12,13,14};				// Pinout values for servos on pca_minutes
   init_Digit(&D_MnOne, &LS_MnOne,arr_MnOne,pca_minutes,M1);	// Initialize the MnOne Digit
-  all_Digit_servo(&D_MnOne, HOME);							// Set Digit servos to Home position
+  uint8_t m1_min_off[7] = {0,5,5,10,5,0,10};
+  uint8_t m1_max_off[7] = {50,48,50,50,48,42,55};
+  init_offsets(&D_MnOne, m1_min_off, m1_max_off);
+  all_Digit_servo(&D_MnOne, 1);							// Set Digit servos to Home position
 
   // Variables for color sweep on separator
   uint8_t angle = 0;
@@ -198,7 +208,7 @@ int main(void)
 			  update_Digits(&D_HrTen, &D_HrOne, &D_MnTen, &D_MnOne, &clock);
 			  render_Digits(&D_HrTen, &D_HrOne, &D_MnTen, &D_MnOne);
 		 }
-		 render_sep(&TimSep, angle + (i * angle_difference), 255, 60);// Update separator color
+		 render_sep(&TimSep, angle + (i * angle_difference), 255, 10);// Update separator color
 		 i++;
 		 change_time(&clock, &cv);// Check clock vars and change if necessary
 		 last_sum = current_sum;

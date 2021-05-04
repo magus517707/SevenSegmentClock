@@ -96,21 +96,38 @@ void cal_servos(ServoCal *s){
 	for(int i = 0; i < 4; i++){
 		uint8_t d = s->d_srv[i];
 		if(d != 0){
+			uint8_t k;
 			switch(i){
 				case 0:
-					for(int j = 0;j<7;j++)D_HrTen.set_array[i] = ((1<<i)&d);
+					k = 6;
+					for(int j = 0;j<7;j++){
+						D_HrTen.set_array[k] = ((1<<j)&d);
+						k--;
+					}
 					set_Digit_servo_angle(&D_HrTen, s->angle);
 					break;
 				case 1:
-					for(int j = 0;j<7;j++)D_HrOne.set_array[i] = ((1<<i)&d);
+					k = 6;
+					for(int j = 0;j<7;j++){
+						D_HrOne.set_array[k] = ((1<<j)&d);
+						k--;
+					}
 					set_Digit_servo_angle(&D_HrOne, s->angle);
 					break;
 				case 2:
-					for(int j = 0;j<7;j++)D_MnTen.set_array[i] = ((1<<i)&d);
+					k = 6;
+					for(int j = 0;j<7;j++){
+						D_MnTen.set_array[k] = ((1<<j)&d);
+						k--;
+					}
 					set_Digit_servo_angle(&D_MnTen, s->angle);
 					break;
 				case 3:
-					for(int j = 0;j<7;j++)D_MnOne.set_array[i] = ((1<<i)&d);
+					k = 6;
+					for(int j = 0;j<7;j++){
+						D_MnOne.set_array[k] = ((1<<j)&d);
+						k--;
+					}
 					set_Digit_servo_angle(&D_MnOne, s->angle);
 					break;
 			}

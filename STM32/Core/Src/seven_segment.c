@@ -7,14 +7,11 @@
 
 
 #include "seven_segment.h"
-#define UP 70
-#define DOWN 40
-#define CENTER 55
 #define SERVO_DEL 100
 
-#define LEDH 120
-#define LEDS 143
-#define LEDL 120
+#define LEDH 2
+#define LEDS 255
+#define LEDL 127
 
 // Initialize a single digit structure on the clock
 void init_Digit(Digit *D, LightStrip *LS, uint8_t *chan_arr, I2C_HandleTypeDef *i2c, uint8_t dig_pos){
@@ -171,21 +168,31 @@ void set_Digit_value(Digit *D, uint8_t val){
 void set_Digit_servo(Digit *D){
 	for(int i = 0; i < 7; i++){
 		if(D->set_array[i] != 0){
-			PCA9685_SetServoAngle (D->pca9685_i2c, D->chan_array[i],DOWN);
+			PCA9685_SetServoAngle (D->pca9685_i2c, D->chan_array[i],D->offsets[i].min);
 			delay_us(SERVO_DEL);
 		}
 		else{
-			PCA9685_SetServoAngle (D->pca9685_i2c, D->chan_array[i],UP);
+			PCA9685_SetServoAngle (D->pca9685_i2c, D->chan_array[i],D->offsets[i].max);
 			delay_us(SERVO_DEL);
 		}
 	}
 }
 
 //Set all Servos in a Digit to a specific angle
-void all_Digit_servo(Digit *D, uint8_t angle){
-	for(int i = 0; i < 7; i++){
-		PCA9685_SetServoAngle (D->pca9685_i2c, D->chan_array[i],angle);
-		delay_us(SERVO_DEL);
+void all_Digit_servo(Digit *D, uint8_t l){
+	if(l == 1){
+		for(int i = 0; i < 7; i++){
+			PCA9685_SetServoAngle (D->pca9685_i2c, D->chan_array[i],D->offsets[i].max);
+			delay_us(SERVO_DEL);
+
+		}
+	}
+	else{
+		for(int i = 0; i < 7; i++){
+			PCA9685_SetServoAngle (D->pca9685_i2c, D->chan_array[i],D->offsets[i].min);
+			delay_us(SERVO_DEL);
+
+		}
 	}
 }
 
@@ -199,4 +206,10 @@ void set_Digit_servo_angle(Digit *D, uint16_t ang){
 	}
 }
 
+void init_offsets(Digit *D, uint8_t *min, uint8_t *max){
+	for(int i = 0; i < 7; i++){
+		D->offsets[i].min = min[i];
+		D->offsets[i].max = max[i];
+	}
+}
 

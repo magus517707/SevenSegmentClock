@@ -22,7 +22,6 @@
 typedef struct ServoOffsets{
 	// All values represent degrees
 	uint8_t min;
-	uint8_t center;
 	uint8_t max;
 }ServoOffsets;
 
@@ -65,6 +64,7 @@ void display_LEDValue(Digit *D,uint8_t h, uint8_t s, uint8_t l);
 void get_SetArray(Digit *D);
 void set_Digit_value(Digit *D, uint8_t val);
 void set_Digit_servo(Digit *D);
-void all_Digit_servo(Digit *D, uint8_t angle);
+void all_Digit_servo(Digit *D, uint8_t l);
 void set_Digit_servo_angle(Digit *D, uint16_t ang);
+void init_offsets(Digit *D, uint8_t *min, uint8_t *max);
 #endif /* INC_SEVEN_SEGMENT_H_ */

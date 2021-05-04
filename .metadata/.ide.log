@@ -1,0 +1,26 @@
+2021-04-28 13:29:58,944 [INFO] Activator:170 - 
+
+
+2021-04-28 13:29:58,945 [INFO] Activator:171 - !SESSION log4j initialized
+2021-04-28 13:30:10,070 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Apr 28, 2021 1:30:10 PM org.glassfish.grizzly.nio.NIOTransport start
+2021-04-28 13:30:10,072 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Adjusting kernel thread pool to max size 17 to handle configured number of SelectorRunners
+2021-04-28 13:30:10,072 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-04-28 13:30:10,091 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Apr 28, 2021 1:30:10 PM org.glassfish.grizzly.http.server.NetworkListener start
+2021-04-28 13:30:10,093 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Started listener bound to [127.0.0.1:52518]
+2021-04-28 13:30:10,093 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-04-28 13:30:10,095 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Apr 28, 2021 1:30:10 PM org.glassfish.grizzly.http.server.HttpServer start
+2021-04-28 13:30:10,095 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: [HttpServer] Started.
+2021-04-28 13:30:10,095 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-04-28 13:30:10,115 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Apr 28, 2021 1:30:10 PM org.glassfish.tyrus.server.Server start
+2021-04-28 13:30:10,116 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: WebSocket Registered apps: URLs all start with ws://127.0.0.1:52518
+2021-04-28 13:30:10,116 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-04-28 13:30:10,117 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Apr 28, 2021 1:30:10 PM org.glassfish.tyrus.server.Server start
+2021-04-28 13:30:10,117 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: WebSocket server started.
+2021-04-28 13:30:10,117 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-04-28 13:31:49,802 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Apr 28, 2021 1:31:49 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+2021-04-28 13:31:49,803 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Stopped listener bound to [127.0.0.1:52518]
+2021-04-28 13:31:49,803 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-04-28 13:31:49,806 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Apr 28, 2021 1:31:49 PM org.glassfish.tyrus.server.Server stop
+2021-04-28 13:31:49,806 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] INFO: Websocket Server stopped.
+2021-04-28 13:31:49,806 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2021-04-28 13:31:50,345 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 

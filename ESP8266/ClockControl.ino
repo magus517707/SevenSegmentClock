@@ -2,27 +2,32 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include "index.h"
-#define ssid      "Internet_Waifu_2.4"       // WiFi SSID
-#define password  "3219607277"  // WiFi password
+#define ssid      ""       // WiFi SSID
+#define password  ""  // WiFi password
+#define a2i(x) (server.arg(x).toInt())
 
 const int BUFFER_SIZE = 16;
 char buf[BUFFER_SIZE];
 ESP8266WebServer server(80);
 
 // Convert normal decimal numbers to binary coded decimal
+//STM32 RTC uses BCD values
 byte decToBcd(byte val){
   return ( (val/10*16) + (val%10) );
 }
 
-void handleRoot(){
-  String s = webpage;
-  server.send(200, "text/html", s);
-}
 void charToString(char S[], String &D){
   String rc(S);
   D = rc;
 }
 
+//Returns webpage in index.h when there is a server request
+void handleRoot(){
+  String s = webpage;
+  server.send(200, "text/html", s);
+}
+
+//Queries the Nucleo for the current time and then return this value to the webpage
 void update_page_time(){
   //memset(buf, 0, BUFFER_SIZE);
   uint8_t hey[] = "tik-tok\n";
@@ -38,6 +43,7 @@ void update_page_time(){
   }
 }
 
+//Toggles the reset pin on the Nucleo Board. Have an issue with the board freezing on powerup
 void reset_clock(){
   Serial.println("Reset");
     digitalWrite(D6, LOW);
@@ -45,11 +51,13 @@ void reset_clock(){
     digitalWrite(D6, HIGH);
 }
 
+// Indicates to the Nucleo to set the clock digits to the disabled state
 void toggle_clock(){
   uint8_t TOG[5] = {'T','E','O','M','\r'};
   Serial.write(TOG,sizeof(TOG));
 }
 
+// No longer used, this math is done on the client side via JS
 uint16_t servo_angle_16(float ang){
   float min_ang = 0.0;
   float max_ang = 180.0;
@@ -62,34 +70,33 @@ uint16_t servo_angle_16(float ang){
   return Value;
 }
 
-//Set specific digit
+//Set specific digit value
 void st(){
 uint8_t header;
-switch(server.arg(0).toInt()){
-  case 0:
-    header = 'H';
-    break;
-  case 1:
-    header = 'M';
-    break;
-  case 2:
-    header = 'S';
-    break;
-  default:
-      return;
-}
-uint8_t br[6] = {header,decToBcd(server.arg(1).toInt()),'E','O','M','\r'};
+  switch(a2i(0)){
+    case 0:
+      header = 'H';
+      break;
+    case 1:
+      header = 'M';
+      break;
+    case 2:
+      header = 'S';
+      break;
+    default:
+        return;
+  }
+uint8_t br[6] = {header,decToBcd(a2i(1)),'E','O','M','\r'};
 Serial.write(br,sizeof(br));
 }
 
-//Set all digits
+//Set all digits at the same time
 void sa(){
-uint8_t br[8] = {'A',decToBcd(server.arg(0).toInt()),decToBcd(server.arg(1).toInt()),decToBcd(server.arg(2).toInt()),'E','O','M','\r'};
+uint8_t br[8] = {'A',decToBcd(a2i(0)),decToBcd(a2i(1)),decToBcd(a2i(2)),'E','O','M','\r'};
 Serial.write(br,sizeof(br));
 }
 
-#define a2i(x) (server.arg(x).toInt())
-
+//Send encoded list of Servos to adjust and the angle they should be adjusted to.
 void ss(){
 uint8_t a[6];
 for(int i  = 0; i < 4; i++){

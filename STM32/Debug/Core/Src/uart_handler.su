@@ -1,4 +1,4 @@
 uart_handler.c:22:6:init_handler	8	static
 uart_handler.c:28:6:Process_Uart_In	24	static
 uart_handler.c:71:6:change_time	16	static
-uart_handler.c:95:6:cal_servos	40	static
+uart_handler.c:95:6:cal_servos	48	static
